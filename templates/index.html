@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EEG Seizure Detection</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 EEG Seizure Detection</h1>
+
+    <form action="/predict" method="post">
+      <label htmlFor="eeg_data">Enter 178 EEG values (comma-separated):</label><br />
+      <textarea id="eeg_data" name="eeg_data" placeholder="0.1, 0.2, 0.3, ..."></textarea><br /><br />
+      <button type="submit">Predict</button>
+    </form>
+  </div>
+</body>
+</html>
