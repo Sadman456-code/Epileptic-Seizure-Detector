@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html", message=None)
+    return render_template("index.html", message=None, status=None)
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -17,7 +17,7 @@ def predict():
         if len(values) != 178:
             return render_template("index.html", message="❌ Error: Exactly 178 EEG values are required.", status="error")
 
-        # MOCK prediction logic (replace this later with real model)
+        # MOCK prediction logic (replace this with actual model)
         avg = np.mean(values)
         if avg > 0.5:
             label = "🧠 Epileptic"
@@ -26,7 +26,7 @@ def predict():
             label = "✅ Non-Epileptic"
             confidence = 94.2
 
-        result_message = f"Prediction: <strong>{label}</strong><br>Confidence: <strong>{confidence}%</strong>"
+        result_message = f"Prediction: <strong>{label}</strong><br>Confidence: <strong>{confidence:.1f}%</strong>"
         return render_template("index.html", message=result_message, status="success")
 
     except Exception as e:
