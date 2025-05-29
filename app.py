@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request
 import numpy as np
+import os
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index.html", message=None)
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -14,22 +15,22 @@ def predict():
         values = np.array([float(x) for x in input_data.strip().split(",")])
 
         if len(values) != 178:
-            return "Error: Exactly 178 EEG values are required."
+            return render_template("index.html", message="❌ Error: Exactly 178 EEG values are required.", status="error")
 
         # MOCK prediction logic (replace this later with real model)
         avg = np.mean(values)
-        if avg > 0.5:  # arbitrary threshold just for testing
-            label = "Epileptic"
+        if avg > 0.5:
+            label = "🧠 Epileptic"
             confidence = 87.5
         else:
-            label = "Non-Epileptic"
+            label = "✅ Non-Epileptic"
             confidence = 94.2
 
-        return f"Mock Prediction: {label} (Confidence: {confidence}%)"
-    except Exception as e:
-        return f"Error: {str(e)}"
+        result_message = f"Prediction: <strong>{label}</strong><br>Confidence: <strong>{confidence}%</strong>"
+        return render_template("index.html", message=result_message, status="success")
 
-import os
+    except Exception as e:
+        return render_template("index.html", message=f"❌ Error: {str(e)}", status="error")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
