@@ -32,5 +32,4 @@ def predict():
 import os
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # Use Heroku's PORT or 5000 locally
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
