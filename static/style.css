@@ -82,15 +82,16 @@ button:hover {
 /* Responsive adjustments */
 @media (max-width: 600px) {
     h1 {
-        font-size: 2em;
+        font-size: 2.2em;
     }
 
     textarea {
-        height: 120px;
+        height: 180px;
+        font-size: 1.1em;
     }
 
     button {
-        padding: 12px 30px;
-        font-size: 1em;
+        padding: 15px 40px;
+        font-size: 1.1em;
     }
 }
