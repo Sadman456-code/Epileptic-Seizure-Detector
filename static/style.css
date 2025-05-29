@@ -4,50 +4,61 @@ body {
     background: url("/static/eeg.jpeg") no-repeat center center fixed;
     background-size: cover;
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* Default container */
 .container {
+    width: 90%;
     max-width: 800px;
-    margin: 10vh auto;
-    padding: 4vh 5vw;
-    background: rgba(255, 255, 255, 0.92);
+    margin: auto;
+    padding: 40px 30px; /* Equal padding left and right */
+    background: rgba(255,255,255,0.88);
     border-radius: 20px;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
     text-align: center;
+    box-sizing: border-box; /* Important for padding inclusion */
 }
 
-/* Title */
+/* New inner wrapper to control input spacing */
+.inner-wrapper {
+    width: 100%; /* Fill full width inside container padding */
+    margin: 20px auto 0 auto; /* Top margin for spacing from text */
+    padding: 0 10px; /* Optional: add horizontal padding for input spacing */
+    box-sizing: border-box;
+}
+
 h1 {
-    font-size: 2.7em;
+    font-size: 2.5em;
     color: #222;
     margin-bottom: 30px;
     font-weight: 600;
 }
 
-/* Text area */
 textarea {
     width: 100%;
-    height: 180px;
-    padding: 16px;
-    border-radius: 12px;
+    height: 150px;
+    padding: 15px;
+    border-radius: 10px;
     border: 1px solid #ccc;
     font-size: 1em;
     resize: vertical;
     font-family: 'Poppins', sans-serif;
+    box-sizing: border-box; /* ensure padding doesn't overflow */
 }
 
-/* Button */
 button {
-    margin-top: 25px;
-    padding: 16px 40px;
+    margin-top: 20px;
+    padding: 15px 40px;
     font-size: 1.1em;
     background-color: #007BFF;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
+    font-family: 'Poppins', sans-serif;
     font-weight: 600;
 }
 
@@ -55,50 +66,63 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* Message box */
-.message-box {
-    margin-top: 25px;
+.message {
+    margin-top: 30px;
     padding: 20px;
     border-radius: 12px;
-    font-size: 1.15em;
+    font-size: 1.2em;
     font-weight: 500;
-    line-height: 1.5em;
+    word-wrap: break-word;
 }
 
-.message-box.success {
+.message.success {
     background-color: #d4edda;
     color: #155724;
-    border: 1px solid #c3e6cb;
+    border: 2px solid #c3e6cb;
 }
 
-.message-box.error {
+.message.error {
     background-color: #f8d7da;
     color: #721c24;
-    border: 1px solid #f5c6cb;
+    border: 2px solid #f5c6cb;
 }
 
-/*  Mobile-specific styles only */
-@media (max-width: 600px) {
+/* Responsive design for mobile screens */
+@media (max-width: 768px) {
+    body {
+        justify-content: center;   /* vertically center the container */
+        padding: 20px;
+        min-height: 100vh;         /* ensure body fills viewport height */
+    }
+
     .container {
-        margin: 5vh auto;
-        padding: 6vh 4vw;
+        padding: 30px 20px; /* Keep equal left/right padding */
+        margin: auto;
+        display: flex;           /* make container a flexbox */
+        flex-direction: column;
+        justify-content: center; /* vertically center content inside */
+        min-height: 60vh;        /* make container taller to center nicely */
+    }
+
+    .inner-wrapper {
+        padding: 0 5px; /* Adjust inner padding on mobile */
     }
 
     h1 {
-        font-size: 1.9em;
+        font-size: 2.2em;   /* slightly larger text */
     }
 
     textarea {
-        height: 260px; /* taller input */
-        font-size: 1.05em; /* bigger font */
+        font-size: 1.2em;   /* larger text inside textarea */
+        height: 220px;      /* taller textarea */
     }
 
     button {
-        padding: 14px 30px;
-        font-size: 1em;
+        font-size: 1.3em;   /* larger button text */
+        padding: 18px 36px; /* slightly bigger button */
     }
 
-    .message-box {
-        font-size: 1.05em;
+    .message {
+        font-size: 1.1em;
     }
 }
