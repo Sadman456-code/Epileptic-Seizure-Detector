@@ -1,18 +1,24 @@
 body {
     margin: 0;
     padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: url("/static/eeg.jpeg") no-repeat center center fixed;
     background-size: cover;
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Semi-transparent container */
 .container {
     max-width: 800px;
-    margin: 100px auto;
+    width: 90%;
+    margin: auto;
     padding: 40px;
-    background: rgba(255,255,255,0.88);
+    background: rgba(255, 255, 255, 0.88);
     border-radius: 20px;
-    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
     text-align: center;
 }
 
@@ -52,23 +58,39 @@ button:hover {
     background-color: #0056b3;
 }
 
+/* Message box styles */
 .message {
-    margin-top: 30px;
-    padding: 20px;
-    border-radius: 12px;
-    font-size: 1.2em;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.1em;
     font-weight: 500;
-    word-wrap: break-word;
 }
 
 .message.success {
     background-color: #d4edda;
     color: #155724;
-    border: 2px solid #c3e6cb;
+    border: 1px solid #c3e6cb;
 }
 
 .message.error {
     background-color: #f8d7da;
     color: #721c24;
-    border: 2px solid #f5c6cb;
+    border: 1px solid #f5c6cb;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    textarea {
+        height: 120px;
+    }
+
+    button {
+        padding: 12px 30px;
+        font-size: 1em;
+    }
 }
