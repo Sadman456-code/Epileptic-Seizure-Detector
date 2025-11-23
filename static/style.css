@@ -11,24 +11,41 @@ body {
 
 .container {
     width: 90%;
-    max-width: 800px;
+    max-width: 1200px;   /* increased from 800px */
     margin: auto;
-    padding: 40px 30px; /* Equal padding left and right */
+    padding: 40px 30px;
     background: rgba(255,255,255,0.88);
     border-radius: 20px;
     box-shadow: 0 12px 24px rgba(0,0,0,0.3);
     text-align: center;
-    box-sizing: border-box; /* Important for padding inclusion */
-}
-
-/* New inner wrapper to control input spacing */
-.inner-wrapper {
-    width: 100%; /* Fill full width inside container padding */
-    margin: 20px auto 0 auto; /* Top margin for spacing from text */
-    padding: 0 10px; /* Optional: add horizontal padding for input spacing */
     box-sizing: border-box;
 }
 
+.inner-wrapper {
+    width: 100%;
+    margin: 20px auto 0 auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+/* New container for plots side by side */
+.plots-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;  /* For responsiveness on small screens */
+}
+
+.plots-wrapper img {
+    width: 48%;
+    height: auto;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+/* Existing styles */
 h1 {
     font-size: 2.5em;
     color: #222;
@@ -36,16 +53,25 @@ h1 {
     font-weight: 600;
 }
 
-textarea {
-    width: 100%;
-    height: 150px;
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
+input[type="file"] {
+    display: block;
+    margin: 20px auto;
+    padding: 14px;
     font-size: 1em;
-    resize: vertical;
+    border: 2px dashed #007BFF;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    box-sizing: border-box; /* ensure padding doesn't overflow */
+}
+
+input[type="file"]:hover {
+    border-color: #0056b3;
 }
 
 button {
@@ -90,39 +116,43 @@ button:hover {
 /* Responsive design for mobile screens */
 @media (max-width: 768px) {
     body {
-        justify-content: center;   /* vertically center the container */
+        justify-content: center;
         padding: 20px;
-        min-height: 100vh;         /* ensure body fills viewport height */
+        min-height: 100vh;
     }
 
     .container {
-        padding: 30px 20px; /* Keep equal left/right padding */
+        padding: 30px 20px;
         margin: auto;
-        display: flex;           /* make container a flexbox */
+        display: flex;
         flex-direction: column;
-        justify-content: center; /* vertically center content inside */
-        min-height: 60vh;        /* make container taller to center nicely */
+        justify-content: center;
+        min-height: 60vh;
     }
 
     .inner-wrapper {
-        padding: 0 5px; /* Adjust inner padding on mobile */
+        padding: 0 5px;
+    }
+
+    .plots-wrapper img {
+        width: 100%;  /* stack images full width on small screens */
+        margin-bottom: 20px;
     }
 
     h1 {
-        font-size: 2.2em;   /* slightly larger text */
-    }
-
-    textarea {
-        font-size: 1.2em;   /* larger text inside textarea */
-        height: 220px;      /* taller textarea */
+        font-size: 2.2em;
     }
 
     button {
-        font-size: 1.3em;   /* larger button text */
-        padding: 18px 36px; /* slightly bigger button */
+        font-size: 1.3em;
+        padding: 18px 36px;
     }
 
     .message {
+        font-size: 1.1em;
+    }
+
+    input[type="file"] {
         font-size: 1.1em;
     }
 }
